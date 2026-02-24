@@ -1,0 +1,8 @@
+{
+  "label": "Docker",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "description": "Contenedores: conceptos, primer contenedor, gestión, redes, volúmenes, imágenes y Docker Compose."
+  }
+}
