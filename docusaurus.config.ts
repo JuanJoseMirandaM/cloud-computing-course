@@ -14,16 +14,15 @@ const config: Config = {
     v4: true, // Improve compatibility with the upcoming Docusaurus v4
   },
 
-  // Set the production url of your site here
-  url: 'https://your-docusaurus-site.example.com',
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  // GitHub Pages: reemplaza con tu usuario/organización de GitHub
+  url: 'https://juanjosemirandam.github.io',
+  baseUrl: '/cloud-computing-course/',
 
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'JuanJoseMirandaM',
+  projectName: 'cloud-computing-course',
+
+  deploymentBranch: 'gh-pages',
+  trailingSlash: true,
 
   onBrokenLinks: 'throw',
 
@@ -43,7 +42,7 @@ const config: Config = {
           routeBasePath: '/', // docs en la ruta principal
           sidebarPath: './sidebars.ts',
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/JuanJoseMirandaM/cloud-computing-course/tree/main/',
         },
         blog: false, // sin blog
         theme: {

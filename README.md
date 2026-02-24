@@ -1,41 +1,56 @@
-# Website
+# Cloud Computing Course - Documentación
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+Sitio de documentación del curso de Computación en la Nube, construido con [Docusaurus](https://docusaurus.io/).
 
-## Installation
-
-```bash
-yarn
-```
-
-## Local Development
+## Instalación
 
 ```bash
-yarn start
+npm install
 ```
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+## Desarrollo local
+
+```bash
+npm run start
+```
+
+Abre http://localhost:3000. Los cambios se recargan automáticamente.
 
 ## Build
 
 ```bash
-yarn build
+npm run build
 ```
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+Genera el sitio estático en la carpeta `build/`.
 
-## Deployment
+## Despliegue en GitHub Pages
 
-Using SSH:
+El proyecto está configurado para publicarse en **GitHub Pages** mediante **GitHub Actions**.
 
-```bash
-USE_SSH=true yarn deploy
-```
+### Pasos para activar GitHub Pages
 
-Not using SSH:
+1. **Sube el repositorio a GitHub** (si aún no lo has hecho):
+   ```bash
+   git remote add origin https://github.com/JuanJoseMirandaM/cloud-computing-course.git
+   git push -u origin main
+   ```
+   Si tu rama principal se llama `master`, el workflow también se ejecuta en ese push.
 
-```bash
-GIT_USER=<Your GitHub username> yarn deploy
-```
+2. **Activa GitHub Pages en el repositorio:**
+   - Ve a **Settings** → **Pages**.
+   - En **Build and deployment**, en **Source** elige **GitHub Actions**.
 
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+3. **Cada vez que hagas push a `main` (o `master`)**, el workflow construirá el sitio y lo desplegará. La documentación quedará en:
+   - **https://juanjosemirandam.github.io/cloud-computing-course/**
+
+### Si usas otro usuario u otro repositorio
+
+Edita en `docusaurus.config.ts`:
+
+- `url`: `https://TU-USUARIO.github.io`
+- `baseUrl`: `'/NOMBRE-REPO/'`
+- `organizationName`: tu usuario de GitHub
+- `projectName`: nombre del repositorio
+
+Así la URL final será `https://TU-USUARIO.github.io/NOMBRE-REPO/`.
