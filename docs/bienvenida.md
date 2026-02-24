@@ -2,46 +2,70 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# Bienvenidos al Curso
 
-Let's discover **Docusaurus in less than 5 minutes**.
+Bienvenidos a la documentación del curso de **Computación en la Nube**. Aquí encontraras los materiales, guías y referencias para seguir el curso.
 
-## Getting Started
+---
 
-Get started by **creating a new site**.
+## Objetivos del Curso
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+### Docker
+- VMs vs Contenedores
+- Arquitectura Docker
+- Imágenes y capas
+- Dockerfile y construcción de imágenes
+- Registro de contenedores
+- Docker Compose
+- Redes
+- Volúmenes persistentes
 
-### What you'll need
+### Cloud
+- Servicios de cómputo cloud (EC2)
+- Almacenamiento (S3)
+- Serverless (Lambda)
+- Arquitectura event-driven
+- Casos de uso
 
-- [Node.js](https://nodejs.org/en/download/) version 20.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+### CI/CD
+- Conceptos CI/CD
+- Pipeline stages
+- Herramientas: Jenkins, GitLab CI, GitHub Actions
+- Estructura de pipelines: stages, jobs, artefactos
+- Testing automatizado
+- Estrategias de deployment (blue-green, canary)
 
-## Generate a new site
+### Kubernetes
+- Arquitectura K8s y componentes
+- Conceptos básicos: Pods, Nodes
+- Deployments, ReplicaSets y estrategias de actualización
+- Services: ClusterIP, NodePort, LoadBalancer
+- Ingress
 
-Generate a new Docusaurus site using the **classic template**.
+---
 
-The classic template will automatically be added to your project after you run the command:
+## Evaluaciones
 
-```bash
-npm init docusaurus@latest my-website classic
-```
+| Tema        | Semana |
+|------------|--------|
+| Docker     | Semana 5  |
+| Cloud      | Semana 9  |
+| CI/CD y Kubernetes | Semana 15 |
 
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
+---
 
-The command also installs all necessary dependencies you need to run Docusaurus.
+## Criterios de Calificación
 
-## Start your site
+**Parcial**
+- **Examen:** 70%
+- **Prácticas:** 30%
 
-Run the development server:
+---
 
-```bash
-cd my-website
-npm run start
-```
+## Proyecto Final
 
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
-
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
-
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+- Grupos de **3** personas
+- Algo **innovador** que integre:
+  - Docker
+  - Cloud
+  - CI/CD
