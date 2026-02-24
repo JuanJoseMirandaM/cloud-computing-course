@@ -14,7 +14,7 @@ const config: Config = {
     v4: true, // Improve compatibility with the upcoming Docusaurus v4
   },
 
-  // GitHub Pages: reemplaza con tu usuario/organización de GitHub
+  // GitHub Pages - Repo: https://github.com/JuanJoseMirandaM/cloud-computing-course
   url: 'https://juanjosemirandam.github.io',
   baseUrl: '/cloud-computing-course/',
 
