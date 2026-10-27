@@ -1,10 +1,5 @@
 name: Hola Actions
-on:
-  push:
-    branches: [rama-prueba]
-  pull_request:
-    branches: [main]
-  workflow_dispatch:
+on: [push]
 permissions:
   contents: read
 jobs:
@@ -14,7 +9,7 @@ jobs:
       - name: Preparar Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "22"
+          node-version: '22'
       - name: Saludar
         run: echo "Hola desde GitHub Actions"
       - name: Consultar versión
