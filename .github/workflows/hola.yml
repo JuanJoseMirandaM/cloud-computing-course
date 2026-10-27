@@ -1,7 +1,7 @@
 name: Hola Actions
 on:
   push:
-    branches: [main]
+    branches: [rama-prueba]
   pull_request:
     branches: [main]
   workflow_dispatch:
