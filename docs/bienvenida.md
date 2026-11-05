@@ -45,11 +45,20 @@ Material en el apartado **AWS**:
 - [Optimización y control (opcional)](./cicd/optimizacion-control.md)
 
 ### Kubernetes
-- Arquitectura K8s y componentes
-- Conceptos básicos: Pods, Nodes
-- Deployments, ReplicaSets y estrategias de actualización
-- Services: ClusterIP, NodePort, LoadBalancer
-- Ingress
+
+Prácticas en **Killercoda y KodeKloud**, después del módulo de CI/CD.
+
+- [Introducción a Kubernetes](./kubernetes/introduccion.md)
+- [Arquitectura básica](./kubernetes/arquitectura.md)
+- [Preparar el entorno de trabajo](./kubernetes/entorno-trabajo.md)
+- [Prácticas con Killercoda y KodeKloud](./kubernetes/killercoda-kodekloud.md)
+- [Pods: tu primera aplicación](./kubernetes/pods.md)
+- [Deployments y réplicas](./kubernetes/deployments.md)
+- [Services y acceso a la aplicación](./kubernetes/services.md)
+- [Manifiestos YAML](./kubernetes/manifiestos-yaml.md)
+- [Diagnóstico básico](./kubernetes/diagnostico.md)
+- [De Docker Compose a Kubernetes](./kubernetes/docker-compose-kubernetes.md)
+- [Desafío final de Kubernetes](./kubernetes/desafio-final.md)
 
 ---
 
