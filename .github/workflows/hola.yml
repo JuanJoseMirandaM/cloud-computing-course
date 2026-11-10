@@ -11,6 +11,6 @@ jobs:
         with:
           node-version: '22'
       - name: Saludar
-        run: echo "Hola desde GitHub Actions"
+        run: echo "Hola desde el Sistema de Reserva de Laboratorios UCB"
       - name: Consultar versión
         run: node --version
