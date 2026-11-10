@@ -6,11 +6,15 @@ sidebar_position: 7
 
 ## Una dirección estable
 
-Los Pods se reemplazan y sus IP pueden cambiar. Un **Service** proporciona un punto de acceso estable y selecciona Pods mediante etiquetas. El selector debe coincidir con las etiquetas de los Pods.
+Las IP de los Pods son **transitorias**: cambian al recrearse. Las aplicaciones no pueden depender de esas IP crudas.
 
-- **ClusterIP:** acceso dentro del clúster; es el tipo predeterminado.
-- **NodePort:** publica también un puerto en los nodos; el acceso externo depende de la red del laboratorio.
-- **LoadBalancer:** solicita un balanceador externo si el entorno tiene una integración que lo provea. En un playground puede quedar pendiente.
+Un **Service** ofrece un endpoint estable (IP virtual + nombre DNS) hacia un grupo de Pods seleccionados por **etiquetas**. El selector del Service debe coincidir con las labels de los Pods.
+
+| Tipo | Uso típico |
+| ---- | ---------- |
+| **ClusterIP** | Acceso **dentro** del clúster (predeterminado). |
+| **NodePort** | También abre un puerto en los nodos; el acceso externo depende de la red del laboratorio. |
+| **LoadBalancer** | Pide un balanceador externo si el entorno lo integra. En un playground a menudo queda pendiente. |
 
 ## Preparación
 
@@ -37,7 +41,13 @@ kubectl run cliente-http -n curso-k8s --image=curlimages/curl:latest --restart=N
 
 Ejecuta `expose` una sola vez; si el Service ya existe, inspecciónalo. La respuesta debe contener el HTML de bienvenida de Nginx. El Pod temporal `cliente-http` se elimina al terminar.
 
-El nombre `web` se resuelve dentro del mismo namespace. Desde otro namespace se puede usar `web.curso-k8s.svc.cluster.local` si el clúster utiliza el dominio predeterminado `cluster.local`.
+El nombre `web` se resuelve dentro del mismo namespace. Desde otro namespace puedes usar `web.curso-k8s.svc.cluster.local` si el clúster usa el dominio predeterminado `cluster.local`.
+
+| Campo | Significado |
+| ----- | ----------- |
+| **port** | Puerto del Service (lo que usan los clientes dentro del clúster). |
+| **targetPort** | Puerto del contenedor en el Pod. |
+| **selector** | Labels que deben tener los Pods para recibir tráfico. |
 
 ## Acceso desde la terminal remota
 

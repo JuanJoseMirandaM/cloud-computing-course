@@ -6,7 +6,11 @@ sidebar_position: 5
 
 ## Unidad de ejecución
 
-Un **Pod** contiene uno o varios contenedores que comparten red y pueden compartir volúmenes. En esta introducción usaremos un contenedor por Pod. Un Pod tiene un ciclo de vida: si se elimina, su identidad e IP no se conservan.
+Un **Pod** es la unidad desplegable más pequeña de Kubernetes. Suele envolver **un** contenedor; también puede agrupar varios contenedores muy acoplados que comparten la misma IP de red, el mismo ciclo de vida y, si se definen, volúmenes.
+
+Los Pods son **efímeros**: se crean, se destruyen y se mueven por el clúster. Cuando se recrean, su IP suele cambiar. Por eso en producción casi nunca se dejan Pods “sueltos” (`kind: Pod`): sin un controlador (Deployment, ReplicaSet, …) **nadie los vuelve a crear** si el nodo muere o si los borras.
+
+En esta introducción usaremos un contenedor por Pod.
 
 ## Práctica en el playground
 
@@ -25,7 +29,7 @@ kubectl logs primer-pod -n curso-k8s
 kubectl exec primer-pod -n curso-k8s -- nginx -v
 ```
 
-`--port=80` documenta el puerto del contenedor; no publica un puerto en tu computador. `Running` indica la fase del Pod; revisa también `READY` para conocer la preparación de sus contenedores.
+`--port=80` documenta el puerto del contenedor; **no** publica un puerto en tu computador. `Running` indica la fase del Pod; revisa también `READY` para saber si el contenedor está listo.
 
 ## Eliminar y observar
 
@@ -34,7 +38,11 @@ kubectl delete pod primer-pod -n curso-k8s
 kubectl get pods -n curso-k8s
 ```
 
-Este Pod se creó directamente y no tiene un Deployment que lo reemplace. En el siguiente tema veremos esa diferencia.
+Este Pod se creó directamente y **no** tiene un Deployment que lo reemplace. En el siguiente tema veremos esa diferencia (self-healing).
+
+:::caution Pods “desnudos”
+Crear solo `kind: Pod` sirve para aprender. En un entorno real administra Pods con un **Deployment** (u otro controlador).
+:::
 
 ## Desafío
 

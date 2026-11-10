@@ -6,7 +6,13 @@ sidebar_position: 3
 
 ## Herramientas necesarias
 
-Necesitamos un clúster y el cliente `kubectl`. En las prácticas usaremos la terminal del navegador de Killercoda o KodeKloud, donde el entorno seleccionado debe proporcionar ambos. No es necesario instalar Kubernetes en tu computador.
+Necesitamos un **clúster** y el cliente **`kubectl`**. En las prácticas usaremos la terminal del navegador de Killercoda o KodeKloud, donde el entorno seleccionado debe proporcionar ambos. No es necesario instalar Kubernetes en tu computador.
+
+| Herramienta | Para qué |
+| ----------- | -------- |
+| **kubectl** | CLI estándar para hablar con la API de Kubernetes. |
+| **Playground** (Killercoda / KodeKloud) | Clúster listo en el navegador. |
+| **Minikube** o **Kind** (opcional) | Clúster de un nodo en tu máquina (VM o Docker). |
 
 ## Verificar la conexión
 
@@ -25,7 +31,15 @@ Si aparece un error de conexión, comprueba que seleccionaste un entorno Kuberne
 
 ## Alternativa local opcional
 
-Para practicar fuera de las sesiones puedes instalar `kubectl` y crear un clúster con **Minikube** o **Kind**, siguiendo sus requisitos oficiales. No necesitamos instalar ambos y esta opción no es requisito de las entregas.
+Para practicar fuera de las sesiones puedes instalar `kubectl` y crear un clúster con **Minikube** o **Kind**. No necesitamos instalar ambos y esta opción **no** es requisito de las entregas.
+
+```bash
+# Ejemplo con Minikube (solo si lo instalaste)
+minikube start
+kubectl get nodes
+# Al terminar:
+# minikube stop
+```
 
 - [Instalar kubectl](https://kubernetes.io/docs/tasks/tools/)
 - [Minikube](https://minikube.sigs.k8s.io/docs/start/)

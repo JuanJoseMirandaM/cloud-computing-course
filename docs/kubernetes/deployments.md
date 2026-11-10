@@ -6,7 +6,13 @@ sidebar_position: 6
 
 ## Mantener un estado deseado
 
-Un **Deployment** administra ReplicaSets; estos mantienen el número deseado de Pods. Si eliminas uno de esos Pods, el controlador crea un reemplazo. Esto no garantiza disponibilidad si el clúster no tiene capacidad o la aplicación está mal configurada.
+Un **Deployment** administra un conjunto de Pods idénticos. Defines el estado deseado —por ejemplo “3 réplicas de mi web con la imagen `nginx:stable-alpine`”— y el controlador se encarga de crearlos, actualizarlos y reemplazarlos.
+
+Por debajo usa **ReplicaSets**: mantienen el número deseado de Pods. Si eliminas uno, el controlador ve que hay 2 en lugar de 3 y lanza un reemplazo. Eso es **self-healing** (auto-recuperación).
+
+No garantiza magia absoluta: si el clúster no tiene capacidad o la aplicación está mal configurada, el estado deseado no se alcanza.
+
+![](https://i.sstatic.net/idLaH.gif)
 
 ## Crear y escalar
 
@@ -27,14 +33,28 @@ kubectl get pods -n curso-k8s -l app=web
 
 Si `web` ya existe de una práctica anterior, inspecciónalo antes de continuar; no vuelvas a ejecutar `create`. Para repetir desde cero elimina solo ese Deployment en tu laboratorio y créalo otra vez.
 
+### Prueba 1: self-healing
+
 Copia el nombre de uno de sus Pods y úsalo en lugar de `NOMBRE_DEL_POD`:
 
 ```bash
+kubectl get pods -n curso-k8s -l app=web
 kubectl delete pod NOMBRE_DEL_POD -n curso-k8s
 kubectl get pods -n curso-k8s -l app=web -w
 ```
 
-Observa la creación del reemplazo. Sal de la observación con **Ctrl+C**.
+En cuanto desaparece el Pod, el Deployment detecta que el conteo actual (2) no coincide con el deseado (3) y crea uno nuevo. Sal de la observación con **Ctrl+C**.
+
+### Prueba 2: escalar arriba y abajo
+
+```bash
+kubectl scale deployment/web -n curso-k8s --replicas=5
+kubectl get pods -n curso-k8s -l app=web
+kubectl scale deployment/web -n curso-k8s --replicas=2
+kubectl get pods -n curso-k8s -l app=web
+```
+
+Kubernetes termina de forma ordenada los Pods sobrantes. Más adelante preferiremos cambiar `replicas` en el YAML y hacer `kubectl apply` (fuente de verdad en Git).
 
 ## Actualizar y volver atrás
 
@@ -46,7 +66,7 @@ kubectl rollout undo deployment/web -n curso-k8s
 kubectl rollout status deployment/web -n curso-k8s --timeout=120s
 ```
 
-El cambio de referencia de imagen crea una revisión; esas etiquetas pueden apuntar a versiones variables. En un pipeline reproducible usa versiones explícitas o digests. Aquí estudiamos el mecanismo de actualización y reversión, no una versión concreta de Nginx.
+El cambio de imagen crea una **revisión**. En un pipeline reproducible usa versiones explícitas o digests. Aquí estudiamos el mecanismo de actualización y reversión, no una versión concreta de Nginx.
 
 ## Desafío
 

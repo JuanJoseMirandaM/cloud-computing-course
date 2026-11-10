@@ -6,14 +6,18 @@ sidebar_position: 8
 
 ## Declarar en archivos
 
-Los comandos anteriores son una forma imperativa de trabajar. Un manifiesto expresa el estado deseado en un archivo que podemos guardar y revisar en Git.
+Los comandos `create` / `expose` / `scale` son una forma **imperativa**. En producción (y en Git) preferimos la forma **declarativa**: un manifiesto YAML describe el estado deseado y `kubectl apply` lo aplica.
 
-- `apiVersion`: versión de la API del recurso.
-- `kind`: tipo de recurso.
-- `metadata`: nombre, namespace y etiquetas.
-- `spec`: configuración deseada.
+Campos comunes:
 
-Usa espacios, conserva la indentación y distingue listas de objetos. `---` separa documentos dentro de un mismo archivo.
+| Campo | Significado |
+| ----- | ----------- |
+| `apiVersion` | Versión de la API del recurso (`apps/v1`, `v1`, …). |
+| `kind` | Tipo de objeto (`Deployment`, `Service`, `Pod`, …). |
+| `metadata` | Nombre, namespace, labels. |
+| `spec` | Configuración deseada. |
+
+Usa **espacios** (no tabuladores), conserva la indentación y distingue listas (`-`) de mapas. `---` separa varios documentos en el mismo archivo.
 
 ## Práctica declarativa
 
@@ -23,14 +27,14 @@ En Killercoda o KodeKloud prepara el namespace:
 kubectl create namespace curso-k8s --dry-run=client -o yaml | kubectl apply -f -
 ```
 
-Si vienes de los ejercicios imperativos, elimina sus recursos `web` antes de cambiar a este ejemplo. Esto evita mezclar configuraciones de ejercicios distintos:
+Si vienes de los ejercicios imperativos, elimina sus recursos `web` antes de cambiar a este ejemplo (evita mezclar configuraciones):
 
 ```bash
 kubectl delete deployment web -n curso-k8s --ignore-not-found
 kubectl delete service web -n curso-k8s --ignore-not-found
 ```
 
-Crea `web.yaml` con el editor del playground o con `cat > web.yaml <<'EOF'`, pega el contenido siguiente y termina con una línea `EOF`:
+Crea `web.yaml` con el editor del playground o con `cat > web.yaml <<'EOF'`, pega el contenido y termina con una línea `EOF`:
 
 ```yaml title="web.yaml"
 apiVersion: apps/v1
@@ -81,7 +85,22 @@ spec:
   type: ClusterIP
 ```
 
-El selector del Deployment coincide con las etiquetas de su plantilla. El Service usa esas mismas etiquetas para encontrar los Pods. `requests` solicita capacidad para scheduling; `limits` acota el uso de recursos. La prueba de preparación, **readinessProbe**, comprueba HTTP antes de que el Pod reciba tráfico del Service.
+### Lectura del manifiesto
+
+| Fragmento | Qué hace |
+| --------- | -------- |
+| `apiVersion` / `kind` | Qué objeto crear. |
+| `spec.replicas` | Cuántas copias del Pod quieres. |
+| `spec.selector.matchLabels` | Qué Pods “pertenecen” al Deployment. |
+| `spec.template` | Plantilla (blueprint) de cada Pod. |
+| `template.metadata.labels` | **Deben coincidir** con el selector del Deployment. |
+| `resources.requests` / `limits` | Capacidad garantizada vs tope (evita que un contenedor agote el nodo). |
+| `readinessProbe` | HTTP de preparación antes de recibir tráfico del Service. |
+| Service `selector: app: web` | Mismas labels para encontrar los Pods. |
+
+:::caution Labels desalineados
+Si `selector.matchLabels` del Deployment **no** coincide con `template.metadata.labels`, el objeto falla la validación. Si el selector del Service no coincide con las labels de los Pods, el Service no tiene endpoints.
+:::
 
 ```bash
 kubectl apply --dry-run=server -f web.yaml
@@ -90,11 +109,11 @@ kubectl rollout status deployment/web -n curso-k8s --timeout=120s
 kubectl get deployments,pods,services -n curso-k8s
 ```
 
-El dry run valida con el servidor sin guardar los recursos. No demuestra que la imagen pueda descargarse o que la aplicación funcione: comprueba también el despliegue y HTTP con el comando de la lección Services.
+El dry run valida con el servidor sin guardar. No demuestra que la imagen se descargue: comprueba también el despliegue y HTTP (lección Services).
 
 ## Desafío
 
-Cambia `replicas` a `3` en el archivo y vuelve a ejecutar `apply`. Mantén el archivo como fuente de verdad: un cambio manual con `scale` puede ser reemplazado por un `apply` posterior.
+Cambia `replicas` a `3` en el archivo y vuelve a ejecutar `apply`. Mantén el archivo como fuente de verdad: un `scale` manual puede ser reemplazado por un `apply` posterior.
 
 **Entrega:** `web.yaml` y evidencia de tres réplicas disponibles. Guarda el archivo fuera del entorno temporal.
 

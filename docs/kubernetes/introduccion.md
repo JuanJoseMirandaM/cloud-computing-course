@@ -6,17 +6,35 @@ sidebar_position: 1
 
 ## ¿Qué problema resuelve?
 
-Docker permite ejecutar una aplicación en contenedores. Cuando hay varias réplicas distribuidas en máquinas diferentes, necesitamos decidir dónde ejecutarlas, reemplazarlas si fallan y permitir que se comuniquen. **Kubernetes**, también llamado **K8s**, automatiza la administración de esas aplicaciones.
+Con `docker run` (o Docker Compose) una aplicación funciona bien en **una** máquina. En producción aparecen otras preguntas:
 
-Declaramos un **estado deseado**, por ejemplo dos réplicas de una web. Los controladores comparan ese estado con el estado actual y actúan para acercarlos. Este proceso se llama **reconciliación**.
+- Si un servidor se cae, ¿quién reinicia los contenedores en otra máquina?
+- ¿Cómo escalamos durante un pico de tráfico?
+- ¿Cómo actualizamos sin cortar el servicio?
 
-Kubernetes puede desplegar, escalar y actualizar aplicaciones. No construye por sí solo nuestras imágenes ni sustituye las pruebas del pipeline de CI/CD. El pipeline puede publicar una imagen y después actualizar el despliegue del clúster.
+**Kubernetes** (abreviado **K8s**) es una plataforma open source de **orquestación de contenedores**. Automatiza el despliegue, el escalado y la administración de aplicaciones en contenedores a lo largo de un **clúster** de máquinas.
 
-## Alcance del módulo
+Declaramos un **estado deseado**, por ejemplo “tres réplicas de esta web”. Los controladores comparan ese estado con el estado actual y actúan para acercarlos. Ese proceso se llama **reconciliación**.
 
-Aprenderemos arquitectura, entorno de trabajo, Pods, Deployments, Services, YAML y diagnóstico. Relacionaremos estos conceptos con Docker Compose y terminaremos con una práctica integradora. Ingress, almacenamiento persistente y gestión de secretos quedan para módulos posteriores.
+![](../../static/images/k8s/state.png)
 
-Todas las pruebas se realizan en **Killercoda o KodeKloud**, usando un playground de Kubernetes. La instalación local es una alternativa opcional.
+Kubernetes **no** construye por sí solo nuestras imágenes ni sustituye las pruebas del pipeline de CI/CD. El pipeline puede publicar una imagen y después actualizar el despliegue del clúster.
+
+## Qué aprenderemos en este módulo
+
+| Tema | Qué lograrás |
+| ---- | ------------ |
+| Arquitectura | Control plane, nodos y el camino de un comando a un contenedor |
+| Entorno | Terminal de Killercoda / KodeKloud (Minikube o Kind, opcional) |
+| Pods | Unidad mínima de ejecución |
+| Deployments | Réplicas, self-healing, actualización y rollback |
+| Services | Acceso estable a los Pods |
+| YAML | Manifiestos declarativos |
+| Diagnóstico | Pending, ImagePullBackOff, CrashLoopBackOff |
+
+Ingress, almacenamiento persistente y gestión de secretos quedan para módulos posteriores.
+
+Todas las prácticas se realizan en **Killercoda o KodeKloud**. La instalación local es una alternativa opcional.
 
 ## Desafío
 
