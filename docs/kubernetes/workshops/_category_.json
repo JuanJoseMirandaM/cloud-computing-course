@@ -5,6 +5,6 @@
     "type": "generated-index",
     "title": "Workshops de Kubernetes",
     "slug": "/kubernetes/workshops",
-    "description": "Prácticas con tiempo fijo en Killercoda o KodeKloud. El primer workshop repasa namespace, Pods y réplicas con kubectl, antes de los manifiestos YAML."
+    "description": "Prácticas en Killercoda o KodeKloud: Workshop 1 imperativo; Workshops 2 (aula) y 3 (práctica) de manifiestos YAML."
   }
 }

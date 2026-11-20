@@ -1,5 +1,6 @@
 ---
 sidebar_position: 1
+sidebar_label: "Workshop 1: Pods y réplicas"
 description: Práctica de una hora para crear un namespace, un Pod y réplicas con kubectl, antes de los manifiestos YAML.
 ---
 
@@ -190,3 +191,5 @@ Cuando termine el borrado, la última consulta responde `NotFound`.
 Sube a la plataforma un **PDF** con una captura de cada paso: entorno, namespace, Pod creado, Pod eliminado, réplicas en 2 y en 3, Pod de reemplazo y namespace eliminado.
 
 Si haces el reto opcional, añade al final de ese PDF la captura de `api` en fallo y la de `api` recuperado, con `web` todavía disponible.
+
+**Siguiente:** manifiestos en aula — [Workshop 2](./yaml-aula.md) — y práctica individual — [Workshop 3](./yaml-practica.md).
