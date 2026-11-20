@@ -117,6 +117,6 @@ Cambia `replicas` a `3` en el archivo y vuelve a ejecutar `apply`. Mantén el ar
 
 **Entrega:** `web.yaml` y evidencia de tres réplicas disponibles. Guarda el archivo fuera del entorno temporal.
 
-**Workshops:** en aula, [Workshop 2 — Entender YAML](./workshops/yaml-aula.md); para practicar solo, [Workshop 3 — Práctica de manifiestos YAML](./workshops/yaml-practica.md).
+**Workshops:** en clase, [Workshop 2 — YAML en clase](./workshops/yaml-en-clase.md); para practicar solo, [Workshop 3 — Práctica de manifiestos YAML](./workshops/yaml-practica.md).
 
 **Referencia:** [Administración declarativa](https://kubernetes.io/docs/tasks/manage-kubernetes-objects/declarative-config/).

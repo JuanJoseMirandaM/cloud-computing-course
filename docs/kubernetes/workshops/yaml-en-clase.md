@@ -1,6 +1,7 @@
 ---
 sidebar_position: 2
-description: Laboratorio de una hora, en clase, para leer las partes de un manifiesto YAML y aplicar un namespace, un Pod y un Deployment.
+sidebar_label: "Workshop 2: YAML en clase"
+description: "Laboratorio de una hora, en clase, para leer las partes de un manifiesto YAML y aplicar un namespace, un Pod y un Deployment."
 ---
 
 # Workshop 2: Manifiestos YAML en clase
@@ -218,3 +219,5 @@ kubectl get namespace curso-k8s
 ```
 
 La última consulta responde `NotFound`.
+
+**Siguiente:** práctica individual — [Workshop 3: Práctica YAML](./yaml-practica.md).

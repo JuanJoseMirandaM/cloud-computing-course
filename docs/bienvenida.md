@@ -56,7 +56,7 @@ Prácticas en **Killercoda y KodeKloud**, después del módulo de CI/CD.
 - [Deployments y réplicas](./kubernetes/deployments.md)
 - [Services y acceso a la aplicación](./kubernetes/services.md)
 - [Manifiestos YAML](./kubernetes/manifiestos-yaml.md)
-- Workshops K8s: [1 · Pods y réplicas](./kubernetes/workshops/namespace-pods-replicas.md), [2 · YAML aula](./kubernetes/workshops/yaml-aula.md), [3 · YAML práctica](./kubernetes/workshops/yaml-practica.md)
+- Workshops K8s: [1 · Pods y réplicas](./kubernetes/workshops/namespace-pods-replicas.md), [2 · YAML en clase](./kubernetes/workshops/yaml-en-clase.md), [3 · YAML práctica](./kubernetes/workshops/yaml-practica.md)
 - [Diagnóstico básico](./kubernetes/diagnostico.md)
 - [De Docker Compose a Kubernetes](./kubernetes/docker-compose-kubernetes.md)
 - [Desafío final de Kubernetes](./kubernetes/desafio-final.md)

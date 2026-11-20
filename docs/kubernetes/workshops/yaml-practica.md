@@ -1,14 +1,14 @@
 ---
 sidebar_position: 3
 sidebar_label: "Workshop 3: Práctica YAML"
-description: Práctica individual con manifiestos YAML: escribir, aplicar, corregir labels, escalar y comprobar HTTP.
+description: "Práctica individual con manifiestos YAML: escribir, aplicar, corregir labels, escalar y comprobar HTTP."
 ---
 
 # Workshop 3: Práctica de manifiestos YAML
 
 Práctica **individual** (~60–75 min) en **Killercoda** o **KodeKloud**. Aquí trabajas **solo**: escribes el YAML, aplicas, rompes, arreglas y entregas capturas.
 
-Si hiciste el [Workshop 2 en aula](./yaml-aula.md), ya viste la anatomía del archivo. Si no, lee antes [Manifiestos YAML](../manifiestos-yaml.md).
+Si hiciste el [Workshop 2 en clase](./yaml-en-clase.md), ya viste la anatomía del archivo. Si no, lee antes [Manifiestos YAML](../manifiestos-yaml.md).
 
 Abre una **sesión nueva**. Trabaja solo dentro de `curso-k8s`.
 
